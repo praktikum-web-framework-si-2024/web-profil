@@ -8,8 +8,6 @@
 		<title>Praktikum PWF</title>
 
 		<link rel="stylesheet" href="{{ asset('assets/bootstrap/bootstrap.min.css') }}">
-
-		@vite(['resources/css/app.css', 'resources/js/app.js'])
 	</head>
 	<body>
 
