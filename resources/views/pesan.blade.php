@@ -11,15 +11,35 @@
           </svg>          
           <h1>Pesan Masuk</h1>
         </div>
+
+        <!-- Form to submit a new message -->
+        <form action="{{ route('pesan.store') }}" method="POST">
+          @csrf
+          <div class="mb-3">
+            <label for="name" class="form-label">Nama</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Pesan</label>
+            <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Kirim Pesan</button>
+        </form>
+
+        <hr>
+
+        <!-- Display all messages -->
         <ul class="list-group">
-          <li class="list-group-item">
-            <p>Dari <b>Harist Ilyasa</b> dengan email <b>harist@gmail.com</b></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error dolores, itaque doloribus neque inventore non nihil sequi beatae nisi quos provident adipisci exercitationem architecto rem, hic minima, similique optio deleniti fuga dignissimos qui nostrum ad facilis. Hic beatae ut id, obcaecati fugiat corporis incidunt nemo officia aperiam voluptatem deleniti porro vel.</p>
-          </li>
-          <li class="list-group-item">
-            <p>Dari <b>Firzian Ananta</b> dengan <b>firzian@gmail.com</b></p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo error dolores, itaque doloribus neque inventore non nihil sequi beatae nisi quos provident adipisci exercitationem architecto rem, hic minima, similique optio deleniti fuga dignissimos qui nostrum ad facilis. Hic beatae ut id, obcaecati fugiat corporis incidunt nemo officia aperiam voluptatem deleniti porro vel, adipisci cum voluptatum quos at exercitationem autem sapiente repellendus repudiandae? Ad quas cupiditate distinctio velit ipsam corrupti officiis, provident impedit. Reprehenderit, saepe aperiam quasi sequi ipsum at? Iure ad provident laboriosam inventore quam deleniti eveniet reprehenderit sunt aliquid enim repudiandae ipsa voluptatem sequi corrupti, praesentium, numquam, harum repellendus.</p>
-          </li>
+          @foreach($pesans as $pesan)
+            <li class="list-group-item">
+              <p>Dari <b>{{ $pesan->name }}</b> dengan email <b>{{ $pesan->email }}</b></p>
+              <p>{{ $pesan->message }}</p>
+            </li>
+          @endforeach
         </ul>
       </div>
     </div>
