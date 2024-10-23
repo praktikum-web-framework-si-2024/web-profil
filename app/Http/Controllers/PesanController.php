@@ -30,4 +30,12 @@ class PesanController extends Controller
 
         return redirect('/pesan')->with('success', 'Pesan berhasil dikirim!');
     }
+
+    public function destroy(int $id) {
+        // Save new Pesan record
+        $pesan = Pesan::find($id);
+        $pesan->delete();
+
+        return redirect('/pesan')->with('success', 'Pesan berhasil dihapus!');
+    }
 }

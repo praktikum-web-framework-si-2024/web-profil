@@ -36,8 +36,15 @@
         <ul class="list-group">
           @foreach($pesans as $pesan)
             <li class="list-group-item">
-              <p>Dari <b>{{ $pesan->name }}</b> dengan email <b>{{ $pesan->email }}</b></p>
-              <p>{{ $pesan->message }}</p>
+              <form action="{{ route('pesan.destroy', ['id' => $pesan->id]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <span class="d-flex justify-items-center justify-content-between">
+                  <p>Dari <b>{{ $pesan->name }}</b> dengan email <b>{{ $pesan->email }}</b></p>
+                  <button type="submit" class="btn btn-danger">Hapus</button>
+                </span>
+                <p>{{ $pesan->message }}</p>
+              </form>
             </li>
           @endforeach
         </ul>

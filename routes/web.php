@@ -28,3 +28,5 @@ Route::get('/profile', [ProfileController::class, 'index']);
 
 Route::get('/pesan', [PesanController::class, 'index']);
 Route::post('/pesan', [PesanController::class, 'store'])->name('pesan.store');
+
+Route::delete('/pesan/{id}', [PesanController::class, 'destroy'])->name('pesan.destroy');
