@@ -41,7 +41,10 @@
                 @method('DELETE')
                 <span class="d-flex justify-items-center justify-content-between">
                   <p>Dari <b>{{ $pesan->name }}</b> dengan email <b>{{ $pesan->email }}</b></p>
-                  <button type="submit" class="btn btn-danger">Hapus</button>
+                  <div>
+                    <a href="{{ route('pesan.edit', ['id' => $pesan->id]) }}" class="btn btn-primary">Edit</a>
+                    <button type="submit" class="btn btn-danger">Hapus</button>
+                  </div>
                 </span>
                 <p>{{ $pesan->message }}</p>
               </form>

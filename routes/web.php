@@ -30,3 +30,6 @@ Route::get('/pesan', [PesanController::class, 'index']);
 Route::post('/pesan', [PesanController::class, 'store'])->name('pesan.store');
 
 Route::delete('/pesan/{id}', [PesanController::class, 'destroy'])->name('pesan.destroy');
+
+Route::get('pesan/{id}', [PesanController::class, 'edit'])->name('pesan.edit');
+Route::put('pesan/{id}', [PesanController::class, 'update'])->name('pesan.update');
