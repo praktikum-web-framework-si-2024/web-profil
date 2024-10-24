@@ -28,3 +28,4 @@ Route::get('/profile', [ProfileController::class, 'index']);
 
 Route::get('/pesan', [PesanController::class, 'index']);
 Route::post('/pesan', [PesanController::class, 'store'])->name('pesan.store');
+Route::put('/pesan/{id}', [PesanController::class, 'update'])->name('pesan.update');

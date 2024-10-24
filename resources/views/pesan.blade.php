@@ -36,12 +36,60 @@
         <ul class="list-group">
           @foreach($pesans as $pesan)
             <li class="list-group-item">
+        <!--  -->
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+
+         
+
               <p>Dari <b>{{ $pesan->name }}</b> dengan email <b>{{ $pesan->email }}</b></p>
               <p>{{ $pesan->message }}</p>
+            </div>
+        <!-- -->
+            <div class="btn-group">
+              <button type="submit" class="btn btn-warning btn-sm" data-bs-toggle="modal"
+              data-bs-target="#editmodal{{$pesan->id}}">
+            Edit
+              </button>
+            </div>
+          
+
+
+
+        <div class="modal fade" id="editmodal{{$pesan->id}}" tabindex="-1">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <h5 class="modal-title">Edit pesan</h5>
+            <form action="{{ route('pesan.update', $pesan->id)}}" method="POST">
+              @csrf
+              @method('PUT')
+              <div class="modal-body">
+                <div class="mb-3">
+                  <label for="edit_name{{ $pesan->id}}" class="form-label">Nama</label>
+                  <input type="text" class="form-control" id="name" name="name" value="{{ $pesan->name }}">
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="text" class="form-control" id="email" name="email" value="{{ $pesan->email }}">
+                </div>
+                <div class="mb-3">
+                  <label for="pesan" class="form-label">Message</label>
+                  <input type="text" class="form-control" id="message" name="message" value="{{ $pesan->message }}">
+                </div>
+                <div class="modal-footer">
+                  <button type="submit">simpan</button>
+
+                </div>
+            </form>
+             
+            </div>
+          </div>
+        </div>
             </li>
           @endforeach
         </ul>
       </div>
+      
     </div>
   </div>
 @endsection
